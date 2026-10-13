@@ -1,0 +1,99 @@
+<h2>Cadastro de evento</h2>
+
+<form (ngSubmit)="salvar()">
+  <div>
+    <label for="titulo">Título do evento</label><br>
+    <input
+      id="titulo"
+      type="text"
+      name="titulo"
+      [(ngModel)]="evento.titulo"
+      [class.invalido]="camposTocados.titulo && !!erros.titulo"
+      (blur)="tocarCampo('titulo')"
+    >
+    @if (camposTocados.titulo && erros.titulo) {
+      <small class="erro">{{ erros.titulo }}</small>
+    }
+  </div>
+
+  <div>
+    <label for="data">Data</label><br>
+    <input
+      id="data"
+      type="date"
+      name="data"
+      [(ngModel)]="evento.data"
+      [class.invalido]="camposTocados.data && !!erros.data"
+      (blur)="tocarCampo('data')"
+    >
+    @if (camposTocados.data && erros.data) {
+      <small class="erro">{{ erros.data }}</small>
+    }
+  </div>
+
+  <div>
+    <label for="local">Local</label><br>
+    <select
+      id="local"
+      name="local"
+      [(ngModel)]="evento.local"
+      [class.invalido]="camposTocados.local && !!erros.local"
+      (blur)="tocarCampo('local')"
+    >
+      <option value="">Selecione...</option>
+      @for (opcao of locais; track opcao) {
+        <option [value]="opcao">{{ opcao }}</option>
+      }
+    </select>
+    @if (camposTocados.local && erros.local) {
+      <small class="erro">{{ erros.local }}</small>
+    }
+  </div>
+
+  <div>
+    <label for="emailResponsavel">E-mail do responsável</label><br>
+    <input
+      id="emailResponsavel"
+      type="email"
+      name="emailResponsavel"
+      [(ngModel)]="evento.emailResponsavel"
+      [class.invalido]="camposTocados.emailResponsavel && !!erros.emailResponsavel"
+      (blur)="tocarCampo('emailResponsavel')"
+    >
+    @if (camposTocados.emailResponsavel && erros.emailResponsavel) {
+      <small class="erro">{{ erros.emailResponsavel }}</small>
+    }
+  </div>
+
+  <div>
+    <label for="vagas">Vagas</label><br>
+    <input
+      id="vagas"
+      type="number"
+      min="1"
+      max="200"
+      name="vagas"
+      [(ngModel)]="evento.vagas"
+      [class.invalido]="camposTocados.vagas && !!erros.vagas"
+      (blur)="tocarCampo('vagas')"
+      (ngModelChange)="onVagasChange($event)"
+    >
+    @if (camposTocados.vagas && erros.vagas) {
+      <small class="erro">{{ erros.vagas }}</small>
+    }
+  </div>
+
+  <button type="submit" [disabled]="temErro">Salvar</button>
+</form>
+
+<h3>Eventos cadastrados</h3>
+
+@for (item of eventos; track item.id) {
+  <div class="cartao-evento">
+    <strong>{{ item.titulo }}</strong>
+    <p>{{ item.data }} · {{ item.local }}</p>
+    <p>{{ item.emailResponsavel }} · {{ item.vagas }} vagas</p>
+  </div>
+} @empty {
+  <p>Nenhum evento cadastrado ainda.</p>
+}

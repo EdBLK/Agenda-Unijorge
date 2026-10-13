@@ -1,0 +1,22 @@
+.menu {
+  display: flex;
+  gap: 12px;
+  margin: 12px 0 20px;
+  flex-wrap: wrap;
+}
+
+.menu a {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #1f2937;
+  background: #e5e7eb;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.menu a.ativo {
+  background: #2563eb;
+  color: #fff;
+  font-weight: 600;
+}
