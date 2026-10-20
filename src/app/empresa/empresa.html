@@ -1,0 +1,109 @@
+<section class="empresa-panel">
+  <div class="section-header">
+    <div>
+      <p class="eyebrow">Cadastros</p>
+      <h2>Cadastro de empresa</h2>
+    </div>
+    <span class="badge">{{ empresas.length }} empresa(s)</span>
+  </div>
+
+  @if (mensagem) {
+    <p class="sucesso">{{ mensagem }}</p>
+  }
+
+  <form class="empresa-form" (ngSubmit)="salvar()">
+    <fieldset>
+      <legend>Dados da empresa</legend>
+
+      <div class="campo-grid">
+        <div class="campo">
+          <label for="nomeEmpresa">Nome da empresa</label>
+          <input id="nomeEmpresa" name="nomeEmpresa" type="text" [(ngModel)]="empresa.nome" placeholder="Ex: Tech Unijorge" />
+        </div>
+
+        <div class="campo">
+          <label for="cnpj">CNPJ</label>
+          <input id="cnpj" name="cnpj" type="text" [(ngModel)]="empresa.cnpj" placeholder="00.000.000/0000-00" />
+        </div>
+      </div>
+
+      <div class="campo-grid">
+        <div class="campo">
+          <label for="segmento">Segmento</label>
+          <input id="segmento" name="segmento" type="text" [(ngModel)]="empresa.segmento" placeholder="Tecnologia, educação, serviços..." />
+        </div>
+
+        <div class="campo">
+          <label for="responsavel">Responsável</label>
+          <input id="responsavel" name="responsavel" type="text" [(ngModel)]="empresa.responsavel" placeholder="Nome do contato" />
+        </div>
+      </div>
+
+      <div class="campo-grid">
+        <div class="campo">
+          <label for="fundacaoEmpresa">Fundação</label>
+          <input id="fundacaoEmpresa" name="fundacaoEmpresa" type="date" [(ngModel)]="empresa.fundacao" />
+        </div>
+
+        <div class="campo">
+          <label for="emailEmpresa">E-mail</label>
+          <input id="emailEmpresa" name="emailEmpresa" type="email" [(ngModel)]="empresa.email" placeholder="contato@empresa.com" />
+        </div>
+
+        <div class="campo">
+          <label for="telefoneEmpresa">Telefone</label>
+          <input id="telefoneEmpresa" name="telefoneEmpresa" type="tel" [(ngModel)]="empresa.telefone" placeholder="(00) 00000-0000" />
+        </div>
+      </div>
+
+      <div class="campo-grid">
+        <div class="campo campo-linha">
+          <label for="enderecoEmpresa">Endereço</label>
+          <input id="enderecoEmpresa" name="enderecoEmpresa" type="text" [(ngModel)]="empresa.endereco" placeholder="Rua, número, bairro" />
+        </div>
+      </div>
+
+      <div class="campo-grid">
+        <div class="campo">
+          <label for="cidadeEmpresa">Cidade</label>
+          <input id="cidadeEmpresa" name="cidadeEmpresa" type="text" [(ngModel)]="empresa.cidade" placeholder="Cidade" />
+        </div>
+
+        <div class="campo">
+          <label for="estadoEmpresa">Estado</label>
+          <input id="estadoEmpresa" name="estadoEmpresa" type="text" [(ngModel)]="empresa.estado" placeholder="SP" />
+        </div>
+      </div>
+
+      <div class="campo campo-linha">
+        <label for="observacoesEmpresa">Observações</label>
+        <textarea id="observacoesEmpresa" name="observacoesEmpresa" rows="4" [(ngModel)]="empresa.observacoes" placeholder="Descreva informações relevantes da empresa..."></textarea>
+      </div>
+    </fieldset>
+
+    <div class="actions">
+      <button type="button" class="btn-secondary" (click)="limparFormulario()">Limpar dados</button>
+      <button type="submit">Salvar empresa</button>
+    </div>
+  </form>
+
+  <div class="lista-empresas">
+    <h3>Empresas cadastradas</h3>
+
+    @for (item of empresas; track item.id) {
+      <article class="cartao-empresa">
+        <div class="cartao-topo">
+          <strong>{{ item.nome }}</strong>
+          <span>{{ item.segmento || 'Sem segmento' }}</span>
+        </div>
+        <p><strong>CNPJ:</strong> {{ item.cnpj }}</p>
+        <p><strong>Fundação:</strong> {{ item.fundacao ? (item.fundacao | date: 'dd/MM/yyyy') : 'Não informada' }}</p>
+        <p><strong>Contato:</strong> {{ item.responsavel }} · {{ item.email }}</p>
+        <p><strong>Telefone:</strong> {{ item.telefone || 'Não informado' }}</p>
+        <p><strong>Local:</strong> {{ item.cidade }} - {{ item.estado }}</p>
+      </article>
+    } @empty {
+      <p class="vazio">Nenhuma empresa cadastrada ainda.</p>
+    }
+  </div>
+</section>

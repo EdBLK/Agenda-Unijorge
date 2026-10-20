@@ -1,1 +1,195 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --bg: #f4f7ff;
+  --panel: #ffffff;
+  --panel-soft: #f8fafc;
+  --primary: #4f46e5;
+  --primary-dark: #3730a3;
+  --primary-soft: #eef2ff;
+  --text: #0f172a;
+  --muted: #475569;
+  --border: #e2e8f0;
+  --success-bg: #ecfdf5;
+  --success-text: #047857;
+  --error-bg: #fef2f2;
+  --error-text: #b91c1c;
+  --shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #eef4ff 0%, #f8fafc 42%, #eef2ff 100%);
+  color: var(--text);
+}
+
+h2, h3 {
+  color: var(--text);
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+form {
+  display: grid;
+  gap: 16px;
+}
+
+fieldset {
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  padding: 18px 18px 10px;
+  box-shadow: var(--shadow);
+}
+
+legend {
+  padding: 0 8px;
+  font-weight: 700;
+  color: var(--primary-dark);
+}
+
+label {
+  display: inline-block;
+  margin: 10px 0 6px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+input,
+select {
+  width: 100%;
+  max-width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  background: #fff;
+  color: var(--text);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: rgba(79, 70, 229, 0.6);
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.12);
+}
+
+input.invalido,
+select.invalido {
+  border-color: #ef4444;
+  background: var(--error-bg);
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.08);
+}
+
+button {
+  appearance: none;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, var(--primary) 0%, #2563eb 100%);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 12px 24px rgba(79, 70, 229, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 26px rgba(37, 99, 235, 0.22);
+}
+
+button:disabled {
+  background: linear-gradient(135deg, #cbd5e1 0%, #94a3b8 100%);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.colunas {
+  display: grid;
+  grid-template-columns: 1.25fr 0.95fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.resumo {
+  margin: 0 0 20px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.resumo-ok {
+  background: var(--success-bg);
+  color: var(--success-text);
+}
+
+.resumo-erro {
+  background: var(--error-bg);
+  color: var(--error-text);
+}
+
+.erro {
+  display: block;
+  margin: 6px 0 10px;
+  color: var(--error-text);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.cartao,
+.cartao-evento {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 14px 16px;
+  margin-top: 14px;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  box-shadow: var(--shadow);
+}
+
+.cartao strong,
+.cartao-evento strong {
+  color: var(--text);
+}
+
+.cartao,
+.cartao-evento p {
+  line-height: 1.5;
+}
+
+.cartao-evento p {
+  margin: 8px 0;
+  color: var(--muted);
+}
+
+@media (max-width: 720px) {
+  .app-shell {
+    margin: 18px 12px;
+    padding: 20px 16px 28px;
+  }
+
+  .colunas {
+    grid-template-columns: 1fr;
+  }
+
+  .menu {
+    gap: 10px;
+  }
+
+  .menu a {
+    flex: 1 1 calc(50% - 10px);
+    min-width: 120px;
+  }
+}

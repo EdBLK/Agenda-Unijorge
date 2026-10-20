@@ -1,9 +1,19 @@
-<h2>Agenda Unijorge</h2>
+<div class="app-shell">
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">Sistema acadêmico</p>
+      <h2 class="main-title">Agenda Unijorge</h2>
+    </div>
+  </header>
 
-<nav class="menu" aria-label="Menu principal">
-  <a routerLink="/cadastro" routerLinkActive="ativo" [routerLinkActiveOptions]="{ exact: true }">Cadastro</a>
-  <a routerLink="/pessoa" routerLinkActive="ativo">Pessoa</a>
-  <a routerLink="/eventos/novo" routerLinkActive="ativo">Novo evento</a>
-</nav>
+  <nav class="menu" aria-label="Menu principal">
+    <a routerLink="/cadastro" routerLinkActive="ativo" [routerLinkActiveOptions]="{ exact: true }">Cadastro</a>
+    <a routerLink="/pessoa" routerLinkActive="ativo">Pessoa</a>
+    <a routerLink="/empresa" routerLinkActive="ativo">Empresa</a>
+    <a routerLink="/eventos/novo" routerLinkActive="ativo">Novo evento</a>
+  </nav>
 
-<router-outlet />
+  <main class="page-content">
+    <router-outlet />
+  </main>
+</div>
