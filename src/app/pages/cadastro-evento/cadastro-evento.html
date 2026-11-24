@@ -91,8 +91,8 @@
 @for (item of eventos; track item.id) {
   <div class="cartao-evento">
     <strong>{{ item.titulo }}</strong>
-    <p>{{ item.data }} · {{ item.local }}</p>
-    <p>{{ item.emailResponsavel }} · {{ item.vagas }} vagas</p>
+    <p>{{ item.data | date:'dd/MM/yyyy' }} · {{ item.data | date:"EEEE, d 'de' MMMM" }} · {{ item.local | uppercase }}</p>
+    <p>{{ item.emailResponsavel }} · {{ item.vagas | number:'1.0-0' }} vagas</p>
   </div>
 } @empty {
   <p>Nenhum evento cadastrado ainda.</p>
